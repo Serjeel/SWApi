@@ -2,7 +2,7 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-This project uses nextjs with apollo graphQL. Apollo is used for requests to api https://swapi.dev.
+This project uses Next.js with Apollo graphQL. Apollo is used for requests to api https://swapi.dev.
 
 ## Getting Started
 
