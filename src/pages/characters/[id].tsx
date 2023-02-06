@@ -3,7 +3,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 
-import styles from "./characters.module.css";
+import styles from "@/styles/globalStyles.module.css";
 
 export default function CharacterId({
   character,
@@ -41,9 +41,8 @@ export default function CharacterId({
         <Link
           key={`character-${i}`}
           className={styles.link}
-          href={`/${urlArray[urlArray.length - 3]}/${
-            urlArray[urlArray.length - 2]
-          }`}
+          href={`/${urlArray[urlArray.length - 3]}/${urlArray[urlArray.length - 2]
+            }`}
         >
           {filmsRes.title}
         </Link>
@@ -64,9 +63,8 @@ export default function CharacterId({
       setSpecie(
         <Link
           className={styles.link}
-          href={`/${urlArray[urlArray.length - 3]}/${
-            urlArray[urlArray.length - 2]
-          }`}
+          href={`/${urlArray[urlArray.length - 3]}/${urlArray[urlArray.length - 2]
+            }`}
         >
           {specieRes.name}
         </Link>
@@ -90,7 +88,7 @@ export default function CharacterId({
         <div className={styles.container}>
           <p className={styles.mainTitle}>{character.name}</p>
           <div className={styles.content}>
-            <div className={styles.infoImage}>
+            <div className={styles.infoImageBlock}>
               <p className={styles.missingImageText}>
                 There should have been a character image here, but the api
                 doesn't have it. And it takes a very long time to search for 82
@@ -98,21 +96,41 @@ export default function CharacterId({
               </p>
             </div>
             <div className={styles.info}>
-              <p className={styles.infoLine}>Height: {character.height}</p>
-              <p className={styles.infoLine}>Mass: {character.mass}</p>
-              <p className={styles.infoLine}>
-                Hair color: {character.hair_color}
-              </p>
-              <p className={styles.infoLine}>
-                Skin holor: {character.skin_color}
-              </p>
-              <p className={styles.infoLine}>
-                Eye holor: {character.eye_color}
-              </p>
-              <p className={styles.infoLine}>Gender: {character.gender}</p>
-              <p className={styles.infoLine}>Specie: {specie}</p>
-              <p className={styles.infoLine}>Homeworld: {homeworld}</p>
-              <p className={styles.infoLine}>Films: {films}</p>
+              <div className={styles.infoLine}>
+                <p><b>Height: </b>
+                  {character.height}</p>
+              </div>
+              <div className={styles.infoLine}>
+                <p><b>Mass: </b>
+                  {character.mass}</p>
+              </div>
+              <div className={styles.infoLine}>
+                <p><b>Hair color: </b> {character.hair_color}</p>
+              </div>
+              <div className={styles.infoLine}>
+                <p><b>Skin holor: </b> {character.skin_color}</p>
+              </div>
+              <div className={styles.infoLine}>
+                <p><b>Eye holor: </b> {character.eye_color}</p>
+              </div>
+              <div className={styles.infoLine}>
+                <p><b>Gender: </b>
+                  {character.gender}</p>
+              </div>
+              <div className={styles.infoLine}>
+                <p><b>Homeworld: </b>
+                  {homeworld}</p>
+              </div>
+              <div className={styles.infoLine}>
+                <p><b>Specie: </b>
+                  {specie} </p>
+              </div>
+              <div className={styles.infoLine}>
+                {films.length ?
+                  <p><b>Films: </b>{films}</p>
+                  : <><b>Films:</b> <div className={styles.loader}></div></>
+                }
+              </div>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ import Episode4Image from "src/images/SWEp4.jpg";
 import Episode5Image from "src/images/SWEp5.jpg";
 import Episode6Image from "src/images/SWEp6.jpg";
 
-import styles from "./films.module.css";
+import styles from "@/styles/globalStyles.module.css";
 
 export default function Films() {
   const { data } = useQuery(ALL_FILMS);
@@ -25,7 +25,7 @@ export default function Films() {
   return (
     <>
       <main className={styles.main}>
-        <div className={styles.container}>
+        <div className={styles.cardsContainer}>
           {data &&
             data.allFilms.films.map((film: any, i: any) => (
               <div className={styles.item} key={`film-${i}`}>

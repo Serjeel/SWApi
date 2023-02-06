@@ -6,7 +6,6 @@ import ContentCard from "@/components/ContentCard";
 import styles from "@/styles/Home.module.css";
 
 export default function Home() {
-  //const { loading, error, data } = useQuery(ALL_CHARACTERS);
 
   return (
     <>

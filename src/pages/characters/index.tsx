@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
 import { ALL_CHARACTERS } from "src/apollo/queries";
-import styles from "./characters.module.css";
+
+import styles from "@/styles/globalStyles.module.css";
 
 export default function characters() {
   const { data } = useQuery(ALL_CHARACTERS);

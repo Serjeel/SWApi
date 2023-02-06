@@ -2,7 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { useRouter } from "next/router";
 import HeaderLogo from "src/images/SWapiLogo.png";
+import ArrowBack from "src/images/ArrowLeft.svg"
 
 import styles from "@/styles/Home.module.css";
 
@@ -11,6 +13,9 @@ interface Props {
 }
 
 export default function Layout({ children }: Props) {
+  const { pathname } = useRouter();
+  console.log(pathname);
+
   return (
     <>
       <Head>
@@ -19,11 +24,17 @@ export default function Layout({ children }: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className={styles.header}>
-        <Link href={"/"}>
-          <Image src={HeaderLogo} alt="header" />
-        </Link>
+      <header className={styles.mainHeader}>
+        <Image src={HeaderLogo} alt="header" />
       </header>
+      {pathname !== '/' &&
+        <header className={styles.backButtonWrapper}>
+          <button className={styles.backButton}>
+            <Link href={"/"}>
+              <Image className={styles.arrow} src={ArrowBack} alt="arrow-back" />
+            </Link>
+          </button>
+        </header>}
       {children}
     </>
   );
