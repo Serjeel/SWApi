@@ -1,23 +1,16 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 import { ReactNode } from "react";
-import { useQuery } from '@apollo/client'
-import { ALL_CHARACTERS } from 'src/apollo/queries'
-import FilmsImage from 'src/images/SWFilms.jpg'
-import CharactersImage from 'src/images/SWCharacters2.jpg'
-import SpeciesImage from 'src/images/SWSpecies2.png'
-import HeaderLogo from 'src/images/SWapiLogo.png'
-import ContentCard from '@/components/ContentCard'
-import styles from '@/styles/Home.module.css'
-import { style } from '@mui/system'
+import HeaderLogo from "src/images/SWapiLogo.png";
+
+import styles from "@/styles/Home.module.css";
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default function Layout({ children }: Props) {
-
   return (
     <>
       <Head>
@@ -27,11 +20,11 @@ export default function Layout({ children }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className={styles.header}>
-        <Link href={'/'}>
-        <Image src={HeaderLogo} alt='header' />
+        <Link href={"/"}>
+          <Image src={HeaderLogo} alt="header" />
         </Link>
       </header>
       {children}
     </>
-  )
+  );
 }

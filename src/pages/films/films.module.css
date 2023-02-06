@@ -68,7 +68,7 @@
 .info {
     display: flex;
     flex-direction: column;
-    width: 530px;
+    width: 45%;
     margin-right: 30px;
 }
 

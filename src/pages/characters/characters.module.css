@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-.characters {
+.contentLines {
     width: 400px;
     margin-top: 50px;
     background-color: rgb(0, 0, 255, 0.5);
@@ -18,12 +18,19 @@
     margin: 15px;
 }
 
+.mainTitle {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 15px;
+}
+
 .name:hover {
     cursor: pointer;
     color: yellow;
 }
 
-.charactersInfo {
+.container {
     width: 1200px;
     background-color: rgb(0, 0, 255, 0.5);
     border: 8px solid blue;
