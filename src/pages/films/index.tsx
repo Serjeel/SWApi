@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { useQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import client from "@/apollo/client";
 import ContentCard from "@/components/ContentCard";
-import { ALL_FILMS } from "src/apollo/queries";
 import Episode1Image from "src/images/SWEp1.jpg";
 import Episode2Image from "src/images/SWEp2.jpg";
 import Episode3Image from "src/images/SWEp3.jpg";
@@ -11,8 +12,9 @@ import Episode6Image from "src/images/SWEp6.jpg";
 
 import styles from "@/styles/globalStyles.module.css";
 
-export default function Films() {
-  const { data } = useQuery(ALL_FILMS);
+export default function Films({
+  data,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const filmsArray = [
     Episode4Image,
     Episode5Image,
@@ -43,3 +45,21 @@ export default function Films() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await client.query({
+    query: gql`
+      query AllFilms {
+        allFilms {
+          films {
+            title
+          }
+        }
+      }
+    `,
+  });
+
+  return {
+    props: { data },
+  };
+};

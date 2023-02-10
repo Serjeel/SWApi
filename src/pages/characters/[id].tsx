@@ -8,7 +8,6 @@ import styles from "@/styles/globalStyles.module.css";
 export default function CharacterId({
   character,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const { query } = useRouter();
 
   const [homeworld, setHomeworld] = useState<string>("");
   const [films, setFilms] = useState<Array<ReactNode>>([]);
@@ -41,8 +40,9 @@ export default function CharacterId({
         <Link
           key={`character-${i}`}
           className={styles.link}
-          href={`/${urlArray[urlArray.length - 3]}/${urlArray[urlArray.length - 2]
-            }`}
+          href={`/${urlArray[urlArray.length - 3]}/${
+            urlArray[urlArray.length - 2]
+          }`}
         >
           {filmsRes.title}
         </Link>
@@ -63,8 +63,9 @@ export default function CharacterId({
       setSpecie(
         <Link
           className={styles.link}
-          href={`/${urlArray[urlArray.length - 3]}/${urlArray[urlArray.length - 2]
-            }`}
+          href={`/${urlArray[urlArray.length - 3]}/${
+            urlArray[urlArray.length - 2]
+          }`}
         >
           {specieRes.name}
         </Link>
@@ -97,39 +98,69 @@ export default function CharacterId({
             </div>
             <div className={styles.info}>
               <div className={styles.infoLine}>
-                <p><b>Height: </b>
-                  {character.height}</p>
+                <p>
+                  <b>Height: </b>
+                  {character.height}
+                </p>
               </div>
               <div className={styles.infoLine}>
-                <p><b>Mass: </b>
-                  {character.mass}</p>
+                <p>
+                  <b>Mass: </b>
+                  {character.mass}
+                </p>
               </div>
               <div className={styles.infoLine}>
-                <p><b>Hair color: </b> {character.hair_color}</p>
+                <p>
+                  <b>Hair color: </b> {character.hair_color}
+                </p>
               </div>
               <div className={styles.infoLine}>
-                <p><b>Skin holor: </b> {character.skin_color}</p>
+                <p>
+                  <b>Skin holor: </b> {character.skin_color}
+                </p>
               </div>
               <div className={styles.infoLine}>
-                <p><b>Eye holor: </b> {character.eye_color}</p>
+                <p>
+                  <b>Eye holor: </b> {character.eye_color}
+                </p>
               </div>
               <div className={styles.infoLine}>
-                <p><b>Gender: </b>
-                  {character.gender}</p>
+                <p>
+                  <b>Gender: </b>
+                  {character.gender}
+                </p>
               </div>
               <div className={styles.infoLine}>
-                <p><b>Homeworld: </b>
-                  {homeworld}</p>
+                <p>
+                  <b>Homeworld: </b>
+                  {homeworld}
+                </p>
               </div>
               <div className={styles.infoLine}>
-                <p><b>Specie: </b>
-                  {specie} </p>
+                {specie ? (
+                  <p>
+                    <b>Specie: </b>
+                    {specie}
+                  </p>
+                ) : (
+                  <>
+                    <b>Specie: </b>
+                    <div className={styles.loader}></div>
+                  </>
+                )}
               </div>
               <div className={styles.infoLine}>
-                {films.length ?
-                  <p><b>Films: </b>{films}</p>
-                  : <><b>Films:</b> <div className={styles.loader}></div></>
-                }
+                {films.length ? (
+                  <p>
+                    <b>Films: </b>
+                    {films}
+                  </p>
+                ) : (
+                  <>
+                    <b>Films: </b>
+                    <div className={styles.loader}></div>
+                  </>
+                )}
               </div>
             </div>
           </div>

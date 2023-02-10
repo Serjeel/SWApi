@@ -3,7 +3,7 @@ import ErrorImage from "../images/Error404.jpg";
 
 import styles from "../styles/Error404.module.css";
 
-export default function CharacterId() {
+export default function Error404Page() {
   return (
     <>
       <main>

@@ -1,12 +1,13 @@
 import Link from "next/link";
-import { useQuery } from "@apollo/client";
-import { ALL_SPECIES } from "src/apollo/queries";
+import { gql } from "@apollo/client";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import client from "@/apollo/client";
 
 import styles from "@/styles/globalStyles.module.css";
 
-export default function Species() {
-  const { data } = useQuery(ALL_SPECIES);
-
+export default function Species({
+  data,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <main className={styles.main}>
@@ -24,3 +25,21 @@ export default function Species() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await client.query({
+    query: gql`
+      query AllSpecies {
+        allSpecies {
+          species {
+            name
+          }
+        }
+      }
+    `,
+  });
+
+  return {
+    props: { data },
+  };
+};

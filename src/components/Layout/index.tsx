@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { useRouter } from "next/router";
 import HeaderLogo from "src/images/SWapiLogo.png";
-import ArrowBack from "src/images/ArrowLeft.svg"
+import ArrowBack from "src/images/ArrowLeft.svg";
 
 import styles from "@/styles/Home.module.css";
 
@@ -14,7 +14,6 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   const { pathname } = useRouter();
-  console.log(pathname);
 
   return (
     <>
@@ -27,14 +26,19 @@ export default function Layout({ children }: Props) {
       <header className={styles.mainHeader}>
         <Image src={HeaderLogo} alt="header" />
       </header>
-      {pathname !== '/' &&
+      {pathname !== "/" && (
         <header className={styles.backButtonWrapper}>
           <button className={styles.backButton}>
             <Link href={"/"}>
-              <Image className={styles.arrow} src={ArrowBack} alt="arrow-back" />
+              <Image
+                className={styles.arrow}
+                src={ArrowBack}
+                alt="arrow-back"
+              />
             </Link>
           </button>
-        </header>}
+        </header>
+      )}
       {children}
     </>
   );
